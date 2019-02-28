@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AgriCommend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/local/images/logo.png"/>
+    <!-- CSS -->
+
+    <link rel="stylesheet" type="text/css" media="screen" href="css/site.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/meter.css" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <!-- /CSS -->
+
+    <!-- Imported Scripts -->
+    <script src="scripts/imported/highcharts.js"></script>
+    <script src="scripts/imported/highcharts-more.js"></script>
+    <script src="scripts/imported/jquery-3.3.1.min.js"></script>
+    <script src="scripts/imported/bootstrap.bundle.min.js"></script>
+    <script src="scripts/imported/bootstrap.min.js"></script>
+    <!-- /Imported Scripts -->
+
+    <!-- Local Scripts -->
+    <script src="scripts/local/color.js"></script>
+
+    <script src="scripts/local/model/plant_details.js"></script>
+
+    <script src="scripts/local/controller/color_controller.js"></script>
+    <script src="scripts/local/controller/meter_image_controller.js"></script>
+    <script src="scripts/local/controller/color_controller.js"></script>
+    
+    <script src="scripts/local/view.js"></script>
+    <!-- /Local Scripts -->
+</head>
+<body>
+    <div id="wrapper">
+
+        <div id="plant-header">
+            <h1><i>AgriC<img src='local/images/logo.png' class='logo' height="75px">mmend</i></h1>
+            <h1 id='menu-text'>Dashboard</h1>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="plant-content">
+
+            <!-- INPUTS -->
+            <div class='plant-inputs'>
+
+            </div>
+            <!-- /INPUTS -->
+
+            <!-- CHARTS -->
+            <div class='highcharts' id='plant-charts'>
+                <!-- Nutrients -->
+                <div class='plant-highcharts' id='n-level-bar'>Nitrogen Chart</div>
+                <div class='plant-highcharts' id='p-level-bar'>Phosphate Chart</div>
+                <div class='plant-highcharts' id='k-level-bar'>Potassium Chart</div>
+                <div class='plant-highcharts' id='ph-level-bar'>pH Level Chart</div>
+
+                <!-- Temperature -->
+                <div class='plant-highcharts' id='temp-level'>
+                    <div class="plant-meters" id="temp-meter">
+                        <h2>Temperature</h2>
+                        <div class='my-meter-container'>
+                            <div class="my-meter">
+                                75%
+                            </div>
+                        </div>
+                    </div>
+                    <img class='meter-img-descriptor' id='temp-logo' src='#'>
+                </div>
+                
+
+                <!-- Rainfall -->
+                <div class='plant-highcharts' id='rain-level'>
+                    <div class="plant-meters" id="rain-meter">
+                        <h2>Rainfall</h2>
+                        <div class='my-meter-container'>
+                            <div class="my-meter">
+                                75%
+                            </div>
+                        </div>
+                    </div>
+                    <img class='meter-img-descriptor' id='rain-logo' src='#'>
+                </div>
+                
+
+                <!-- Humidty -->
+                <div class='plant-highcharts' id='hum-level'>
+                    <div class="plant-meters" id="hum-meter">
+                        <h2>Humidity</h2>
+                        <div class='my-meter-container'>
+                            <div class="my-meter">
+                                75%
+                            </div>
+                        </div>
+                    </div>
+                    <img class='meter-img-descriptor' id='hum-logo' src='#'>
+                </div>
+                
+
+                <!-- Sunlight -->
+                <div class='plant-highcharts' id='sun-level'>
+                    <div class="plant-meters" id="sun-meter">
+                        <h2>Sunlight</h2>
+                        <div class='my-meter-container'>
+                            <div class="my-meter">
+                                75%
+                            </div>
+                        </div>
+                    </div>
+                    <img class='meter-img-descriptor' id='sun-logo' src='#'>
+                </div>
+                
+
+                <div class='plant-highcharts' id='plant-recommendation'>
+                    <h3>Recommended Plants</h3>
+                    <hr/>
+                    <table>
+                        <tr>
+                            <th>Recommended Plants</th>
+                        </tr>
+                        <tr>
+                            <td>Plant boy</td>
+                        </tr>
+                        <tr>
+                            <td>Plant girl</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- /CHARTS -->
+
+            <!-- PLANT DETAILS -->
+            <!-- MODAL -->
+            <div class="modal fade" id="plant-details" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="plant-details-title">Plant Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- /PLANT DETAILS -->
+            
+        </div>
+        <!-- /MAIN CONTENT -->
+
+        <div id="plant-footer">
+
+        </div>
+    </div>
+</body>
+</html>

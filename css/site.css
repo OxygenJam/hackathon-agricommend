@@ -1,0 +1,185 @@
+body{
+    background-image: url('../local/images/bg.png');
+    background-color: #00b81f;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+}
+
+.plant-highcharts{
+    padding:10px;
+}
+
+.plant-meters{
+    margin:30px;
+}
+
+#plant-header{
+    height:100px;
+    background-color:#525459;
+    padding:30px;
+    box-shadow: 2px 2px 10px black;
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index:99999;
+    color:white;
+}
+
+#plant-header #menu-text{
+    position:absolute;
+    right:5%;
+}
+
+#plant-header h1{
+    display: inline-block;
+    margin-left: 30px;
+}
+
+#plant-recommendation table{
+    width:100%;
+}
+
+
+#plant-recommendation td{
+    padding:5px;
+}
+
+#plant-recommendation table tr:nth-child(odd){
+    background-color: #42f4ce;
+}
+
+/* #### Mobile Phones Portrait #### */
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+    #plant-charts{
+        margin-top:150px;
+    }
+
+    #plant-header{
+        height: 75px;
+     }
+ 
+    
+    #plant-header h1{
+       font-size: 20px;
+       margin-left:none;
+    }
+
+    #plant-header img{
+        height: 30px;
+        width: 30px;
+    }
+
+    .plant-highcharts{
+        border:5px solid #006211;
+        width: 400px;
+        height: 400px;
+        background-color: white;
+        margin:10px auto;
+        box-shadow:1px 3px 30px white;
+        cursor: pointer;
+    }
+
+    .plant-meters{
+        margin:15px;
+    }
+
+    .meter-img-descriptor{
+        width: 100px;
+        height: 100px;
+        display: block;
+        margin: 0 auto;
+    }
+}
+  
+  /* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+
+    .plant-highcharts{
+        border:5px solid #006211;
+        width: 600px;
+        height: 600px;
+        background-color: white;
+        margin:10px auto;
+        box-shadow:1px 3px 30px white;
+    }
+}
+  
+  /* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+
+    .plant-highcharts{
+        border:5px solid #006211;
+        width: 280px;
+        height: 280px;
+        background-color: white;
+        margin:10px auto;
+        box-shadow:1px 3px 30px white;
+    }
+
+}
+  
+  /* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px){
+
+    .plant-highcharts{
+        border:5px solid #006211;
+        width: 600px;
+        height: 600px;
+        background-color: white;
+        margin:10px auto;
+        box-shadow:1px 3px 30px white;
+        cursor: pointer;
+    }
+    
+    #plant-recommendation{
+        text-align: center;
+    }
+
+    .meter-img-descriptor{
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin: 0 auto;
+    }
+}
+  
+  /* #### Desktops #### */
+ 
+    /* some CSS here */
+@media screen and (min-width: 1024px){
+
+    #plant-charts{
+        margin-top:150px;
+        margin-bottom: 50px;
+    }
+
+    .plant-highcharts{
+        border:5px solid #006211;
+        width: 25%;
+        height: 400px;
+        background-color: white;
+        margin: 1% 0 0 5%;
+        text-align: center;
+        box-shadow:1px 3px 15px white;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #plant-recommendation{
+        text-align: center;
+        overflow-y: scroll;
+    }
+
+    .meter-img-descriptor{
+        width: 200px;
+        height: 200px;
+    }
+    
+    #meters-bar{
+        width:55%;
+    }
+
+}
+

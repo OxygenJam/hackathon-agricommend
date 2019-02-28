@@ -6,6 +6,11 @@ body{
     padding:0;
 }
 
+h1 a{
+    text-decoration: none !important;
+    color:white !important;
+}
+
 .plant-highcharts{
     padding:10px;
 }
@@ -49,6 +54,60 @@ body{
     background-color: #42f4ce;
 }
 
+#remark-details table tr:nth-child(odd){
+    background-color: #42f4ce;
+}
+
+#plant-details table tr:nth-child(even){
+    background-color: #42f4ce;
+}
+
+#plant-details table th{
+    background-color: #525459;
+    color:white;
+}
+
+#search-txt-box{
+    text-align: center !important;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.bubble-windows{
+    position: fixed;
+    right:5px;
+    top:200px;
+    z-index: 99;
+}
+
+.bubble-windows img{
+    height: 50px;
+    width: 50px;
+    box-shadow:3px 3px 30px black;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.bubble-windows button{
+    border: none;
+    background: transparent;
+}
+
+.bubble-windows button:focus{
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+#remarks-window{
+    top:270px;
+}
+
+#plant-recommendation{
+    text-align: center;
+    overflow-y: scroll;
+}
+
 /* #### Mobile Phones Portrait #### */
 @media screen and (max-device-width: 480px) and (orientation: portrait){
     #plant-charts{
@@ -61,13 +120,19 @@ body{
  
     
     #plant-header h1{
-       font-size: 20px;
+       font-size: 12px;
        margin-left:none;
     }
 
     #plant-header img{
-        height: 30px;
-        width: 30px;
+        height: 15px;
+        width: 15px;
+    }
+
+    #plant-details table{
+        table-layout: fixed;
+        width: 100%;
+        font-size: 8px;
     }
 
     .plant-highcharts{
@@ -103,6 +168,14 @@ body{
         margin:10px auto;
         box-shadow:1px 3px 30px white;
     }
+
+    #plant-details{
+        overflow: scroll;
+    }
+
+    #plant-details table th, #plant-details table td{
+        font-size: 8px;
+    }
 }
   
   /* #### iPhone 4+ Portrait or Landscape #### */
@@ -122,6 +195,20 @@ body{
   /* #### Tablets Portrait or Landscape #### */
 @media screen and (min-device-width: 768px){
 
+    #plant-header h1{
+        font-size: 24px;
+        margin-left:none;
+    }
+
+    #plant-header img{
+        height: 20px;
+        width: 20px;
+    }
+
+    #plant-charts{
+        margin-top:150px;
+        margin-bottom: 50px;
+    }
     .plant-highcharts{
         border:5px solid #006211;
         width: 600px;
@@ -130,6 +217,10 @@ body{
         margin:10px auto;
         box-shadow:1px 3px 30px white;
         cursor: pointer;
+    }
+
+    #plant-details table th, #plant-details table td{
+        font-size: 12px;
     }
     
     #plant-recommendation{
@@ -149,6 +240,16 @@ body{
     /* some CSS here */
 @media screen and (min-width: 1024px){
 
+    #plant-header h1{
+        font-size: 30px;
+        margin-left:none;
+    }
+
+    #plant-header img{
+        height: 30px;
+        width: 30px;
+    }
+
     #plant-charts{
         margin-top:150px;
         margin-bottom: 50px;
@@ -165,11 +266,6 @@ body{
         cursor: pointer;
         display: inline-block;
         vertical-align: top;
-    }
-
-    #plant-recommendation{
-        text-align: center;
-        overflow-y: scroll;
     }
 
     .meter-img-descriptor{

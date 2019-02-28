@@ -18,7 +18,7 @@ function loadPlantModalDetails(index){
         sun_opt_max,
         sun_abs_min,
         sun_abs_max,
-        } = recommended_plant_data.data[index];
+        } = recommended_plant_data[index];
 
     $('#plant-details-title').html(plant_name);
 

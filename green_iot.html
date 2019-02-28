@@ -34,24 +34,27 @@
     <script src="scripts/local/controller/color_controller.js"></script>
     
     <script src="scripts/local/view.js"></script>
+    <script src="scripts/local/cookie_handler.js"></script>
     <!-- /Local Scripts -->
 </head>
 <body>
     <div id="wrapper">
 
+        <div class='bubble-windows' id='remarks-window'>
+            <button data-toggle="modal" data-target='#remark-details'><img src='local/images/bubble-remarks.svg' title="Click me for current remarks of your data"></button>
+        </div>
+
+        <div class='bubble-windows' id='update-window'>
+            <button><img src="local/images/bubble-refresh.svg" title="Click me to manually refresh your data"></button>
+        </div>
+
         <div id="plant-header">
             <h1><i>AgriC<img src='local/images/logo.png' class='logo' height="75px">mmend</i></h1>
-            <h1 id='menu-text'>Dashboard</h1>
+            <h1 id='menu-text'> <span id='menu-user'></span><span id='menu-farm'></span><a href='#'>Dashboard</a> | <a href='/fertilizer'>Plots</a></h1>
         </div>
 
         <!-- MAIN CONTENT -->
         <div id="plant-content">
-
-            <!-- INPUTS -->
-            <div class='plant-inputs'>
-
-            </div>
-            <!-- /INPUTS -->
 
             <!-- CHARTS -->
             <div class='highcharts' id='plant-charts'>
@@ -118,19 +121,14 @@
                 
 
                 <div class='plant-highcharts' id='plant-recommendation'>
-                    <h3>Recommended Plants</h3>
+                    <h3>Recommended Plants <input type="text" id='search-txt-box' name='search-txt-box' placeholder="Search"/></h3>
                     <hr/>
                     <table>
-                        <tr>
-                            <th>Recommended Plants</th>
-                        </tr>
-                        <tr>
-                            <td>Plant boy</td>
-                        </tr>
-                        <tr>
-                            <td>Plant girl</td>
-                        </tr>
-                    </table>
+                            <tr>
+                                <th>Plant Name</th>
+                                <th>Details</th>
+                            </tr>
+                        </table>
                 </div>
             </div>
             <!-- /CHARTS -->
@@ -159,9 +157,28 @@
         </div>
         <!-- /MAIN CONTENT -->
 
-        <div id="plant-footer">
-
+        <!-- REMARKS -->
+        <!-- MODAL -->
+        <div class="modal fade" id="remark-details" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="remark-details-title">Remarks</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Your soil quality seems to be in good shape.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
         </div>
+        <!-- /REMARKS -->
+
     </div>
 </body>
 </html>

@@ -1,0 +1,44 @@
+body{
+    background-image: url('../local/images/bg.png');
+    background-color: #00b81f;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+}
+
+#login-form{
+    height: 300px;
+    width: 300px;
+    background-color:#525459;
+    padding:30px;
+    box-shadow: 1px 1px 20px white;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 5px;
+    text-align: center;
+    color:white;
+}
+
+.login-desc-icons{
+    height: 25px;
+    width: 25px;
+    fill: white !important;
+}
+
+#login-form label{
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+
+

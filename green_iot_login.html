@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="/local/images/logo.png"/>
     <!-- CSS -->
 
-    <link rel="stylesheet" type="text/css" media="screen" href="css/site.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-grid.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-reboot.min.css" />
@@ -22,12 +22,45 @@
     <!-- /Imported Scripts -->
 
     <!-- Local Scripts -->
-    
+    <script src="scripts/local/login_view.js"></script>
+    <script src="scripts/local/cookie_handler.js"></script>
     <!-- /Local Scripts -->
 </head>
 <body>
     <div id="wrapper">
 
+        <div id='login-form'>
+            <h1>Login</h1>
+            <div>
+                Username 
+                <div>
+                        <img class='login-desc-icons' src='local/images/form-user.svg'/>
+                        <input type="text" id='username-txt-box' name='username-txt-box' tabindex="1">
+                </div>
+                
+            </div>
+            <div>
+                Password 
+                <div>
+                    <img class='login-desc-icons' src='local/images/form-pw.svg'/>
+                    <input type="password" id='password-txt-box' name='password-txt-box' tabindex="2">
+                </div>
+            </div>
+
+            <label><input type='checkbox' id='rmbr-me' tabindex="4"/> <i>Remember me</i></label>
+            <br/>
+            <a href="#">Forgot your password?</a>
+            <br/>
+
+            <button type='button' class='btn btn-primary' id='btn-login' tabindex="3">
+                Login
+            </button>
+
+            <button type='button' class='btn btn-success'id='btn-register' data-toggle="modal" data-target='#register-details' tabindex="5">
+                Register
+            </button>
+
+        </div>
 
         <!-- REGISTRATION DETAILS -->
         <!-- MODAL -->
@@ -35,12 +68,13 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="register-details-title">Plant Details</h5>
+                    <h5 class="modal-title" id="register-details-title">Registration Form</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+                    To be implemented in the real deployment
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

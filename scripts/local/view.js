@@ -1,9 +1,42 @@
-var ph_levels = 7.6, n_levels=55, k_levels=89, p_levels = 13;
-var temp = 45, rain = 1500, sunlight = 34000, humidity = 42;
+var ph_levels = 4.4, n_levels=55, k_levels=89, p_levels = 13;
+var temp = 23, rain = 1500, sunlight = 34000, humidity = 42;
 var user = 322;
 var recommended_plant_data = [];
+var remarks = [];
 
 $(document).ready(()=>{
+
+    $('#menu-user').text(`${getCookie('user')}'s `);
+    $('#menu-farm').text('Farm 1 ')
+
+    $('#remarks-window').on('click', ()=>{
+
+        console.log('he')
+        if(remarks.length > 0){
+            $('#remark-details .modal-body').html('<table></table>')
+            for(var i in remarks){
+                $('#remark-details .modal-body table').append(`
+                    <tr><td>${remarks[i]}</td></tr>
+                `);
+            }
+            
+        }
+        else{
+            $('#remark-details .modal-body').html('Your soil quality seems to be in good shape.');
+        }
+
+    });
+
+    $('#update-window').on('click', ()=>{
+
+        initializeView();
+        getRecommendations();
+    });
+
+    $('#search-txt-box').on('input', ()=>{
+
+        searchNameFromRecommendations(`${$('#search-txt-box').val()}`);
+    })
 
     initializeView();
     getRecommendations();
@@ -12,6 +45,7 @@ $(document).ready(()=>{
 
 function initializeView(){
 
+    remarks = [];
     $('#ph-level-bar').html(null);
     $('#p-level-bar').html(null);
     $('#n-level-bar').html(null);
@@ -90,6 +124,13 @@ function initializeView(){
         }]
     });
 
+    if(ph_levels <= 6.5){
+        remarks = [...remarks, "Your soil pH levels are at an acidic level."];
+    }
+    else if(ph_levels >= 7.3){
+        remarks = [...remarks, "Your soil pH levels are at an alkaline level."];
+    }
+    
 
     // Phosphorus Levels
     Highcharts.chart('p-level-bar', {
@@ -129,6 +170,12 @@ function initializeView(){
 
         }]
     });
+    if(p_levels < 16){
+        remarks = [...remarks, "Your soil phosporus levels are below the recommended level"];
+    }
+    else if(p_levels > 40){
+        remarks = [...remarks, "Your soil phosporus levels are above the recommended level."];
+    }
 
     // Nitrogen Levels
     Highcharts.chart('n-level-bar', {
@@ -166,6 +213,12 @@ function initializeView(){
             }
         }]
     });
+    if(n_levels < 20){
+        remarks = [...remarks, "Your soil nitrogen levels are below the recommended level"];
+    }
+    else if(n_levels > 30){
+        remarks = [...remarks, "Your soil nitrogen levels are above the recommended level."];
+    }
 
     // Potassium Levels
     Highcharts.chart('k-level-bar', {
@@ -204,6 +257,12 @@ function initializeView(){
             }
         }]
     });
+    if(k_levels < 81){
+        remarks = [...remarks, "Your soil potassium levels are below the recommended level"];
+    }
+    else if(k_levels > 120){
+        remarks = [...remarks, "Your soil potassium levels are above the recommended level."];
+    }
 
 
     // Temperature
@@ -241,29 +300,29 @@ function initializeView(){
 
 function getRecommendations(){
 
+    $('#plant-recommendation table').html("<tr><td>Please wait, results seems bigger...</td></tr>");
+
     $.get(`/recommend?user=${user}&temp=${temp}&ph=${ph_levels}&rain=${rain}&sun=${sunlight}`, (res) => {
 
-        recommended_plant_data = res;
+        recommended_plant_data = res.data;
         
-        $('#plant-recommendation').html(null);
-        $('#plant-recommendation').append(`
-            <table>
-                <tr>
-                    <th>Plant Name</th>
-                    <th>Details</th>
-                </tr>
-            </table>
+        $('#plant-recommendation table').html(null);
+        $('#plant-recommendation table').append(`
+            <tr>
+                <th>Plant Name</th>
+                <th>Details</th>
+            </tr>
         `);
 
-        let { data, remarks } = recommended_plant_data;
-
-        if(data.length > 0){
+        remarks = remarks.concat(res.remarks);
+        
+        if(recommended_plant_data.length > 0){
 
             
 
-            for(var i = 0; i < data.length; i++){
+            for(var i = 0; i < recommended_plant_data.length; i++){
 
-                let { plant_name } = data[i];
+                let { plant_name } = recommended_plant_data[i];
                 $('#plant-recommendation table').append(`
                     <tr>
                         <td>${plant_name}</td>
@@ -279,16 +338,61 @@ function getRecommendations(){
             
         }
         else{
-            $('#plant-recommendation').html(null);
-            $('#plant-recommendation').append("<h1>No Recommandations can be found:</h1>")
+
+            $('#plant-recommendation table ').html(null);
+            $('#plant-recommendation table').append("<tr>No Recommandations can be found</td")
             
-            for(var i in remarks ){
-                $('#plant-recommendation').append(`${remarks[i]}<br/>`);
-            }
+            $('#plant-recommendation table').append(`<tr>Please click the ! icon buble at your right for more information on why...</tr>`);
             
         }
         
 
     })
 
+}
+
+function searchNameFromRecommendations(name){
+
+    let res = recommended_plant_data.filter((d) => { return d.common_name.indexOf(name) != -1});
+    let res_index = [];
+
+    for(var i in res){
+
+        res_index = [...res_index, recommended_plant_data.indexOf(res[i])];
+    }
+    
+    $('#plant-recommendation table').html(null);
+    $('#plant-recommendation table').append(`
+            <tr>
+                <th>Plant Name</th>
+                <th>Details</th>
+            </tr>
+    `);
+
+
+    if(res.length > 0){
+
+        for(var i = 0; i < res.length; i++){
+
+            let { plant_name } = res[i];
+            $('#plant-recommendation table').append(`
+                <tr>
+                    <td>${plant_name}</td>
+                    <td>
+                        <button onclick='loadPlantModalDetails(${res_index[i]})' class="btn btn-primary" data-toggle="modal" data-target='#plant-details'>
+                            Show details
+                        </button>
+                    </td>
+                </tr>
+            `)
+           
+        }
+        
+    }
+    else{
+
+        $('#plant-recommendation table').html(null);
+        $('#plant-recommendation table').append("<tr>No matching plants can be found by that name</tr>")
+        
+    }
 }

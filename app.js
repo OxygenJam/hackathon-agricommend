@@ -2,6 +2,16 @@ const DataFrame = require('dataframe-js').DataFrame;
 const express = require('express');
 const app = express();
 const pp = require('./scripts/local/prettyPrint.js');
+var bodyParser = require('body-parser');
+
+// ================ //
+// | Routing       | //
+// ================ //
+
+function loggedIn(req, res, next){
+
+    // Check authentication
+}
 
 // ================ //
 // | Middleware   | //
@@ -10,11 +20,41 @@ const pp = require('./scripts/local/prettyPrint.js');
 app.use('/css', express.static('css'));
 app.use('/local', express.static('local'));
 app.use('/scripts', express.static('scripts'));
+app.use(bodyParser.urlencoded({extended : false}));
+app.use(bodyParser.json());
 
-app.get('/', (req,res)=>{
+// Default Page
+app.get('/dashboard', (req,res)=>{
 
     res.sendFile(`${__dirname}/green_iot.html`);
 })
+
+// Login Page
+app.get('/', (req,res)=>{
+
+    res.sendFile(`${__dirname}/green_iot_login.html`);
+})
+
+// Fertilizers Page
+
+// ========== //
+// | POST   | //
+// ========== //
+
+app.post(`/authenticate`, (req,res)=>{
+
+    const { user, pass } = req.body;
+
+    console.log(req.body);
+
+    // TO DO: Implement token and authorization in real implementation
+
+    if(user == 'admin' && pass == 'admin'){
+        res.redirect('/dashboard')
+    }
+})
+
+
 // ======== //
 // | GET   | //
 // ======== //
@@ -74,22 +114,22 @@ app.get('/recommend', (req,res) => {
 
         pp.logPrint(`Number of rows found in ph plant data: ${dfph.count()}`);
         if(dfph.count() < 10){
-            remarks = [...remarks, '-Low amount of plants can be planted via at the current levels, this has effect on the list of recommendations.'];
+            remarks = [...remarks, 'Low amount of plants can be planted via at the current levels, this has effect on the list of recommendations.'];
         }
 
         pp.logPrint(`Number of rows found in temp plant data: ${dftemp.count()}`);
         if(dftemp.count() < 10){
-            remarks = [...remarks, '-Low amount of plants can be planted at the current temperature levels, this has effect on the list of recommendations.'];
+            remarks = [...remarks, 'Low amount of plants can be planted at the current temperature levels, this has effect on the list of recommendations.'];
         }
 
         pp.logPrint(`Number of rows found in rain plant data: ${dfrain.count()}`);
         if(dfrain.count() < 10){
-            remarks = [...remarks, '-Low amount of plants can be planted at the current rainfall levels, this has effect on the list of recommendations.'];
+            remarks = [...remarks, 'Low amount of plants can be planted at the current rainfall levels, this has effect on the list of recommendations.'];
         }
 
         pp.logPrint(`Number of rows found in sun plant data: ${dfsun.count()}`);
         if(dfsun.count() < 10){
-            remarks = [...remarks, '-Low amount of plants can be planted at the current light intensity levels, this has effect on the list of recommendations.'];
+            remarks = [...remarks, 'Low amount of plants can be planted at the current light intensity levels, this has effect on the list of recommendations.'];
         }
 
         let recom = df;
@@ -97,25 +137,25 @@ app.get('/recommend', (req,res) => {
         if(ph){
             recom = recom.innerJoin(dfph, 'plant_name');
         }else{
-            remarks = [...remarks, '-No data for pH levels were provided.'];
+            remarks = [...remarks, 'No data for pH levels were provided.'];
         }
         
         if(temp){
             recom = recom.innerJoin(dftemp, 'plant_name');
         }else{
-            remarks = [...remarks, '-No data for temperature levels were provided.'];
+            remarks = [...remarks, 'No data for temperature levels were provided.'];
         }
 
         if(rain){
             recom = recom.innerJoin(dfrain, 'plant_name');
         }else{
-            remarks = [...remarks, '-No data for rain levels were provided.'];
+            remarks = [...remarks, 'No data for rain levels were provided.'];
         }
          
         if(sun){
             recom = recom.innerJoin(dfrain, 'plant_name');
         }else{
-            remarks = [...remarks, '-No data for light intensity levels were provided.'];
+            remarks = [...remarks, 'No data for light intensity levels were provided.'];
         }
 
         pp.logPrint(`Number of rows found in both joined plant data: ${recom.count()}`);

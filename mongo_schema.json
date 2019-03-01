@@ -1,0 +1,63 @@
+{
+    "user":123124,
+    "farms":[
+        {
+            "location_name":"Batanes Farm",
+            "ph":4,
+            "p":24,
+            "n":16,
+            "k":34,
+            "temp":24,
+            "rain":1500,
+            "sun":24000,
+            "hum":42
+        },
+        {
+            "location_name":"Cavite Farm",
+            "ph":6,
+            "p":32,
+            "n":44,
+            "k":31,
+            "temp":32,
+            "rain":3000,
+            "sun":32000,
+            "hum":13
+        }
+    ],
+    "fertilizer_plots":[
+        {
+            "location_name":"Batanes Farm",
+            "plot":[
+                {
+                    "plot_name":"1A",
+                    "nutrient1":1,
+                    "nutrient2":2,
+                    "nutrient3":3
+                },
+                {
+                    "plot_name":"1B",
+                    "nutrient1":4,
+                    "nutrient2":5,
+                    "nutrient3":6
+                }
+            ]
+        },
+        {
+            "location_name":"Cavite Farm",
+            "plot":[
+                {
+                    "plot_name":"1A",
+                    "nutrient1":2,
+                    "nutrient2":4,
+                    "nutrient3":6
+                },
+                {
+                    "plot_name":"1B",
+                    "nutrient1":8,
+                    "nutrient2":10,
+                    "nutrient3":12
+                }
+            ]
+        }
+    ]
+}

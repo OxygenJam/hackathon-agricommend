@@ -36,6 +36,10 @@ app.get('/', (req,res)=>{
 })
 
 // Fertilizers Page
+app.get('/fertilizer', (req,res)=>{
+
+    res.sendFile(`${__dirname}/green_iot_admin.html`);
+})
 
 // ========== //
 // | POST   | //
@@ -91,7 +95,7 @@ app.get('/recommend', (req,res) => {
 
     temp = req.query.temp;
     rain = req.query.rain;
-    sun = req.query.sun;
+    sun = req.query.sun > 32000 ? 32000 : req.query.sun;
     ph = req.query.ph;
 
     console.log(req.query);
@@ -153,7 +157,7 @@ app.get('/recommend', (req,res) => {
         }
          
         if(sun){
-            recom = recom.innerJoin(dfrain, 'plant_name');
+            recom = recom.innerJoin(dfsun, 'plant_name');
         }else{
             remarks = [...remarks, 'No data for light intensity levels were provided.'];
         }
@@ -208,10 +212,10 @@ app.get('/recommend', (req,res) => {
                 ph_opt_max: ph_opt_max[i],
                 ph_abs_min: ph_abs_min[i],
                 ph_abs_max: ph_abs_max[i],
-                sun_opt_min: sun_opt_min[i],
-                sun_opt_max: sun_opt_max[i],
-                sun_abs_min: sun_abs_min[i],
-                sun_abs_max: sun_abs_max[i]
+                sun_opt_min: sun_opt_min[i] >= 32000 ? ">32000" : sun_opt_min[i],
+                sun_opt_max: sun_opt_max[i] >= 32000 ? ">32000" : sun_opt_max[i],
+                sun_abs_min: sun_abs_min[i] >= 32000 ? ">32000" : sun_abs_min[i],
+                sun_abs_max: sun_abs_max[i] >= 32000 ? ">32000" : sun_abs_max[i]
             }
             ];
         }

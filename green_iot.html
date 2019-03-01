@@ -48,10 +48,20 @@
             <button><img src="local/images/bubble-refresh.svg" title="Click me to manually refresh your data"></button>
         </div>
 
+        <div class='bubble-windows' id="plot-monitor" >
+                <a href='/fertilizer'><img src="local/images/bubble-fertilizer.png" title="Click me to monitor your plots online!"></a>
+        </div>
+
+        <div class='bubble-windows' id="modify-window" >
+            <button data-toggle="modal" data-target='#modify-details'><img src="local/images/bubble-modify.svg" title="Click me to experiment your values!"></button>
+        </div>
+
         <div id="plant-header">
             <h1><i>AgriC<img src='local/images/logo.png' class='logo' height="75px">mmend</i></h1>
             <h1 id='menu-text'> <span id='menu-user'></span><span id='menu-farm'></span><a href='#'>Dashboard</a> | <a href='/fertilizer'>Plots</a></h1>
         </div>
+
+        
 
         <!-- MAIN CONTENT -->
         <div id="plant-content">
@@ -59,15 +69,25 @@
             <!-- CHARTS -->
             <div class='highcharts' id='plant-charts'>
                 <!-- Nutrients -->
-                <div class='plant-highcharts' id='n-level-bar'>Nitrogen Chart</div>
-                <div class='plant-highcharts' id='p-level-bar'>Phosphate Chart</div>
-                <div class='plant-highcharts' id='k-level-bar'>Potassium Chart</div>
-                <div class='plant-highcharts' id='ph-level-bar'>pH Level Chart</div>
+                <div class='plant-highcharts' id='n-level-bar'>
+                    Nitrogen Levels
+                </div>
+                <div class='plant-highcharts' id='p-level-bar'>
+                   Phosphorus Levels
+                </div>
+                <div class='plant-highcharts' id='k-level-bar'>
+                    Potassium Levels
+                </div>
+                <div class='plant-highcharts' id='ph-level-bar'>
+                    ph Levels
+                </div>
 
                 <!-- Temperature -->
                 <div class='plant-highcharts' id='temp-level'>
                     <div class="plant-meters" id="temp-meter">
-                        <h2>Temperature</h2>
+                        <h2>
+                            Temperature
+                        </h2>
                         <div class='my-meter-container'>
                             <div class="my-meter">
                                 75%
@@ -81,7 +101,10 @@
                 <!-- Rainfall -->
                 <div class='plant-highcharts' id='rain-level'>
                     <div class="plant-meters" id="rain-meter">
-                        <h2>Rainfall</h2>
+                        <h2>
+                            Rainfall
+                            
+                        </h2>
                         <div class='my-meter-container'>
                             <div class="my-meter">
                                 75%
@@ -95,7 +118,9 @@
                 <!-- Humidty -->
                 <div class='plant-highcharts' id='hum-level'>
                     <div class="plant-meters" id="hum-meter">
-                        <h2>Humidity</h2>
+                        <h2>
+                            Humidity
+                        </h2>
                         <div class='my-meter-container'>
                             <div class="my-meter">
                                 75%
@@ -109,7 +134,9 @@
                 <!-- Sunlight -->
                 <div class='plant-highcharts' id='sun-level'>
                     <div class="plant-meters" id="sun-meter">
-                        <h2>Sunlight</h2>
+                        <h2>
+                            Sunlight
+                        </h2>
                         <div class='my-meter-container'>
                             <div class="my-meter">
                                 75%
@@ -121,7 +148,7 @@
                 
 
                 <div class='plant-highcharts' id='plant-recommendation'>
-                    <h3>Recommended Plants <input type="text" id='search-txt-box' name='search-txt-box' placeholder="Search"/></h3>
+                    <h3>Recommended Plants <input type="text" class='txt-box' id='search-txt-box' name='search-txt-box' placeholder="Search"/></h3>
                     <hr/>
                     <table>
                             <tr>
@@ -153,6 +180,68 @@
                 </div>
             </div>
             <!-- /PLANT DETAILS -->
+
+            <!-- MODIFY DETAILS -->
+            <!-- MODAL -->
+            <div class="modal fade" id="modify-details" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modify-details-title">Plant Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <table>
+                                <tr>
+                                    <td>Nitrogen Level:</td>
+                                    <td><input type="text" class='txt-box modify-inputs' id='n-txt-box' name='n-txt-box' placeholder="Nitrogen Level"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Phosphorus Level:</td>
+                                    <td><input type="text" class='txt-box modify-inputs' id='p-txt-box' name='p-txt-box' placeholder="Phosphorus Level"/></td>
+                                </tr>  
+                                <tr>
+                                    <td>Potassium Level:</td>
+                                    <td><input type="text" class='txt-box modify-inputs' id='k-txt-box' name='k-txt-box' placeholder="Potassium Level"/></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>pH Level:</td>
+                                    <td><input type="text" class='txt-box modify-inputs' id='ph-txt-box' name='ph-txt-box' placeholder="pH Level"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Temperature:</td>
+                                    <td><input type="text" class='txt-box modify-inputs' id='temp-txt-box' name='temp-txt-box' placeholder="Temperature Level"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Rainfall Level:</td>
+                                    <td><input type="text" class='txt-box modify-inputs' id='rain-txt-box' name='rain-txt-box' placeholder="Rainfall Level"/></td> 
+                                </tr>
+                                <tr>
+                                    
+                                    <td>Humidity Level:</td>
+                                    <td><input type="text" class='txt-box modify-inputs' id='hum-txt-box' name='hum-txt-box' placeholder="Humidity Level"/></td>
+                                </tr>   
+                                <tr>
+                                    <td>Light Intensity Level:</td>
+                                    <td><input type="text" class='txt-box modify-inputs' id='sun-txt-box' name='sun-txt-box' placeholder="Sunlight Level"/></td>
+                                </tr>
+        
+                            </table>
+
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id='modify-btn' class="btn btn-success" data-dismiss="modal">See the magic</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- /MODIFY DETAILS -->
             
         </div>
         <!-- /MAIN CONTENT -->

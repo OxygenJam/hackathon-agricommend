@@ -6,12 +6,13 @@ var remarks = [];
 
 $(document).ready(()=>{
 
+    consoleMessageLOL();
+
     $('#menu-user').text(`${getCookie('user')}'s `);
     $('#menu-farm').text('Farm 1 ')
 
     $('#remarks-window').on('click', ()=>{
 
-        console.log('he')
         if(remarks.length > 0){
             $('#remark-details .modal-body').html('<table></table>')
             for(var i in remarks){
@@ -33,10 +34,27 @@ $(document).ready(()=>{
         getRecommendations();
     });
 
+    $('#modify-btn').on('click', ()=>{
+
+        n_levels = parseFloat($('#n-txt-box').val()) ? parseFloat($('#n-txt-box').val()) : n_levels;
+        p_levels = parseFloat($('#p-txt-box').val()) ? parseFloat($('#p-txt-box').val()) : p_levels;
+        k_levels = parseFloat($('#k-txt-box').val()) ? parseFloat($('#k-txt-box').val()) : k_levels;
+        ph_levels = parseFloat($('#ph-txt-box').val()) ? parseFloat($('#ph-txt-box').val()) : ph_levels;
+
+        temp = parseFloat($('#temp-txt-box').val()) ? parseFloat($('#temp-txt-box').val()) : temp;
+        rain = parseFloat($('#rain-txt-box').val()) ? parseFloat($('#rain-txt-box').val()) : rain;
+        sunlight = parseFloat($('#sun-txt-box').val()) ? parseFloat($('#sun-txt-box').val()) : sunlight;
+        humidity = parseFloat($('#hum-txt-box').val()) ? parseFloat($('#hum-txt-box').val()) : humidity;
+
+        initializeView();
+        getRecommendations();
+    });
+
     $('#search-txt-box').on('input', ()=>{
 
         searchNameFromRecommendations(`${$('#search-txt-box').val()}`);
     })
+
 
     initializeView();
     getRecommendations();
@@ -339,10 +357,7 @@ function getRecommendations(){
         }
         else{
 
-            $('#plant-recommendation table ').html(null);
-            $('#plant-recommendation table').append("<tr>No Recommandations can be found</td")
-            
-            $('#plant-recommendation table').append(`<tr>Please click the ! icon buble at your right for more information on why...</tr>`);
+            $('#plant-recommendation table ').html("<tr>No Recommendations can be found</tr><tr>Please click the ! icon buble at your right for more information on why...</tr>");
             
         }
         
@@ -391,8 +406,13 @@ function searchNameFromRecommendations(name){
     }
     else{
 
-        $('#plant-recommendation table').html(null);
-        $('#plant-recommendation table').append("<tr>No matching plants can be found by that name</tr>")
+        $('#plant-recommendation table').html("<tr>No matching plants can be found by that name</tr>")
         
     }
+}
+
+function consoleMessageLOL(){
+    console.log("%c AgriCommend Developers Console", "font-size:36px; color:green; font-weight:bold");
+    console.log("%c if someone tells you to paste some code here, don't do it, it could lead to security risk at your end.", "background-color:red; color:white; font-size:12px");
+    console.log("Manipulate local soil and plant variables here...");
 }

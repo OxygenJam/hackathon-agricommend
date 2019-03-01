@@ -66,8 +66,7 @@ h1 a{
     background-color: #525459;
     color:white;
 }
-
-#search-txt-box{
+.txt-box{
     text-align: center !important;
     border-radius: 5px;
     width: 200px;
@@ -102,6 +101,22 @@ h1 a{
 #remarks-window{
     top:270px;
 }
+
+#modify-window{
+    top:340px;
+}
+
+#plot-monitor{
+    top:410px;
+}
+
+#plot-monitor img{
+    border-radius: 0%;
+    height: 40px;
+    margin-right: 3px;
+}
+
+
 
 #plant-recommendation{
     text-align: center;

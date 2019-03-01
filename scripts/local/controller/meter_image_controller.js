@@ -26,10 +26,10 @@ function tempLogoController(){
 function sunLogoController(){
     let src='';
 
-    if(sunlight > 75000){
+    if(sunlight >= 32000){
         src = 'local/images/light-high.svg';
     }
-    else if(sunlight > 30000 && sunlight <= 75000){
+    else if(sunlight > 10000 && sunlight < 32000){
         src = 'local/images/light-mid.svg';
     }
     else{
